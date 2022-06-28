@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+    volumes:
+      - /home/barry/mongodb/database:/data/db
+    ports:
+      - 27017:27017
+    restart: unless-stopped
+
+  node:
+    image: aymanb97/node-app
+    environment:
+      - PORT="8080"
+      - MONGO_URL="mongodb://mongodb:27017/users"
+    container_name: node_js_app
+    depends_on:
+      - mongodb
+    ports:
+      - 8080:8080
