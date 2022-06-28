@@ -4,7 +4,11 @@ The following document describes the migration of a basic Node.js and MongoDB we
 ### Prerequisites
 This project assumes that you have a Kubernetes Cluster up and running and `kubectl` command line tool installed.
 
-### Create a docker image from 
+Create a docker image from the NodeJS app.
+
+```shell
+$ docker build . -t image-name
+```
 
 ### Creating a MongoDB Service
 
